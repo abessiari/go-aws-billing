@@ -13,15 +13,15 @@ variable "account_name" {
   default = "test_noctua_billing"
 }
 
-variable "account_budget_limit" {
-  type = string
-  default = "20.0"
-}
-
 variable "emails" {
   description = "List of emails"
   type = list(string)
   default = ["abessiari@gmail.com"]
+}
+
+variable "account_budget_limit" {
+  type = string
+  default = "20.0"
 }
 
 variable "services" {

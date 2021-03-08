@@ -10,7 +10,7 @@
 - Go to [url](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 
 #### AWS Credentials.
-- Create a file or override the location in aws/provider.tf
+- Create a file or override the location in provider.tf
 
 ```
 [default]
@@ -30,12 +30,34 @@ variable "emails" {
 ```
 
 
-#### Create AWS instance: 
+#### Services and Budget Limts : 
+
+These are specified in vars.tf. You can also add others services specified in service.tf.
+
+```sh
+variable "account_budget_limit" {
+  type = string
+  default = "20.0"
+}
+
+variable "services" {
+  default = {
+    EC2 = {
+      budget_limit = "10.0"
+    },
+    S3 = {
+      budget_limit = "5.0"
+    }
+  }
+}
+```
+
+#### Create Budgets: 
 
 Note: Terraform creates some folders and files to maintain the state. Use <i>ls -a aws</i>
 
 ```sh
-# This will install the aws provider. 
+# This will install the aws terraform provider. 
 terraform init
 
 # Validate the config
@@ -44,13 +66,13 @@ terraform validate
 # View what is going to be created. The plan.
 terraform plan
 
-# This will create the vpc, security group and the instance
+# This will create the budgets
 terraform apply
 
-# To view the outputs
-terraform output 
-
-#To view what was deployed:
+#To view:
 terraform show 
+
+#To destroy:
+terraform destroy 
 
 ```
