@@ -16,7 +16,7 @@ variable "account_name" {
 variable "emails" {
   description = "List of emails"
   type = list(string)
-  default = ["abessiari@gmail.com"]
+  default = ["xxxx@gmail.com"]
 }
 
 variable "account_budget_limit" {
