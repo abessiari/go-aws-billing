@@ -1,13 +1,3 @@
-variable aws_credentials_file {
-  type = string
-  default = "~/.aws/credentials"
-}
-
-variable "region" {
-  type = string
-  default = "us-west-2"
-}
-
 variable "account_name" {
   type = string
   default = "test_noctua_billing"
@@ -16,7 +6,7 @@ variable "account_name" {
 variable "emails" {
   description = "List of emails"
   type = list(string)
-  default = ["abessiari@gmail.com"]
+  default = ["xxxx@gmail.com"]
 }
 
 variable "account_budget_limit" {

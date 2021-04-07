@@ -10,16 +10,26 @@
 - Go to [url](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 
 #### AWS Credentials.
-- Create a file or override the location in provider.tf
+- Export these variables
 
 ```
-[default]
-aws_access_key_id = XXXX
-aws_secret_access_key = XXXX
+export AWS_ACCESS_KEY_ID="XXX"
+export AWS_SECRET_ACCESS_KEY="YYY"
+export AWS_DEFAULT_REGION="us-west-2"
+```
+
+#### Overriding Variables
+- The quickest way to override the variables (Emails, Services, Budget Limits) with experimental
+  changes is to copy vars.tf to the override terraform file. 
+
+- For more on overriding variables Go to [url](https://amazicworld.com/overriding-variables-in-terraform/)
+
+```
+cp vars.tf _override.tf
 ```
 
 #### EMAILS 
-- Overide the emails used in vars.tf
+- Add email addresses as needed.
 
 ```
 variable "emails" {
@@ -29,10 +39,9 @@ variable "emails" {
 }
 ```
 
-
 #### Services and Budget Limts : 
 
-These are specified in vars.tf. You can also add others services specified in service.tf.
+Example using EC2 and S3 services. You can add other services specified in service.tf.
 
 ```sh
 variable "account_budget_limit" {
@@ -52,7 +61,7 @@ variable "services" {
 }
 ```
 
-#### Create Budgets: 
+#### Deploy: 
 
 Note: Terraform creates some folders and files to maintain the state. Use <i>ls -a aws</i>
 
